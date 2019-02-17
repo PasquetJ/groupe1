@@ -28,9 +28,11 @@ public class Client {
 		    in = new BufferedReader (new InputStreamReader (socket.getInputStream()));
 		    String message_distant = in.readLine();
 		    System.out.println(message_distant);
+		    
 //Demende si le joueur est prêt
 		    String message_distant1 = in.readLine();
 		    System.out.println(message_distant1);
+		    
 //Saisie du joueur s'il est prêt ou non et envoie au serveur
 		    Scanner sc = new Scanner(System.in);
 		    String message = sc.next();
@@ -41,6 +43,15 @@ public class Client {
 //Message retour suite à la réponse du joueur
 		    String message_distant2 = in.readLine();
 		    System.out.println(message_distant2);
+		    
+//Début partie
+		    String message1 = sc.next();
+		    out = new PrintWriter(socket.getOutputStream());
+		    out.println(message1);
+		    out.flush();
+//Message retour suite à la réponse du joueur
+		    String message_distant3 = in.readLine();
+		    System.out.println(message_distant3);
 		    
 		   /* String message2 = sc.next();
 		    out = new PrintWriter(socket.getOutputStream());
