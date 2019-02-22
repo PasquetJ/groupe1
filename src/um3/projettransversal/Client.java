@@ -1,3 +1,4 @@
+
 package um3.projettransversal;
 
 import java.io.BufferedReader;
@@ -52,14 +53,6 @@ public class Client {
 //Message retour suite à la réponse du joueur
 		    String message_distant3 = in.readLine();
 		    System.out.println(message_distant3);
-		    
-		   /* String message2 = sc.next();
-		    out = new PrintWriter(socket.getOutputStream());
-		    out.println("Client : " + message2);
-		    out.flush();
-		    
-		    String message_distant2 = in.readLine();
-		    System.out.println("Serveur : " + message_distant2);*/
 		    
 		    
 		    sc.close(); 
