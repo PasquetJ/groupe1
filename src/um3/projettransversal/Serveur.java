@@ -26,6 +26,7 @@ public class Serveur {
 			out = new PrintWriter(socketduserveur.getOutputStream());
 		    out.println("Bienvenue joueur !\nVous allez débuter une partie de Mastermind. Prêt(e) ? (oui/non)");
 		    out.flush();
+		    
 //Récupère la réponse du joueur s'il veux jouer		    
 		    in = new BufferedReader (new InputStreamReader (socketduserveur.getInputStream()));
 		    String message = in.readLine();
