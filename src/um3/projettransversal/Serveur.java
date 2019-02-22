@@ -45,7 +45,7 @@ public class Serveur {
 					out.flush();
 			    }
 			    else {
-			    	out.println("Fauxe");
+			    	out.println("Faux");
 					out.flush();
 			    }
 			}
