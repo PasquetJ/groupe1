@@ -31,9 +31,9 @@ public class Serveur {
 		    String message = in.readLine();
 		    System.out.println("Réponse joueur : " + message);
 
-//lancement de la partie ou pas
+//Lancement de la partie ou pas
 			if(message != "non") {
-//déroulement de la partie
+//Déroulement de la partie
 				String code = "Rouge-Bleu-Vert-Jaune";
 				out.println("Début de la partie ! Il y a 4 couleurs entre le Bleu, le Jaune, le Vert et le Rouge.\nVous devrez trouvez la bonne combinaison pour gagner. Petite précision les couleurs devront avoir leur initiale en majuscule et les coleurs séparés par un tiret.");
 				out.flush();
