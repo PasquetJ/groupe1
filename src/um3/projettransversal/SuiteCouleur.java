@@ -7,6 +7,6 @@ public enum SuiteCouleur {
 	Jaune, 
 	Orange,
 	Blanc,
-	Roese,
+	Rose,
 	Gris;
 }
