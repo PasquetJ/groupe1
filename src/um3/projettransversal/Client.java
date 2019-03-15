@@ -41,19 +41,26 @@ public class Client {
 		    out.println(message);
 		    out.flush();
 		    
-//Message retour suite à la réponse du joueur
+//Message retour suite à la réponse du joueur, explications
 		    String message_distant2 = in.readLine();
 		    System.out.println(message_distant2);
 		    
-//Début partie
+//Début partie, saisie du nombre de couleur
 		    String message1 = sc.next();
 		    out = new PrintWriter(socket.getOutputStream());
 		    out.println(message1);
 		    out.flush();
-//Message retour suite à la réponse du joueur
+		    
+//Message demande répétition
+	    
+//Demande couleur
 		    String message_distant3 = in.readLine();
 		    System.out.println(message_distant3);
-		    
+		    String message2 = sc.next();
+		    out = new PrintWriter(socket.getOutputStream());
+		    out.println(message2);
+		    out.flush();
+
 		    
 		    sc.close(); 
 		    socket.close();

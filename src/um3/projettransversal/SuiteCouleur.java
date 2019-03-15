@@ -1,5 +1,7 @@
 package um3.projettransversal;
 
+import java.util.Random;
+
 public enum SuiteCouleur {
 	Rouge,
 	Bleu,
@@ -9,4 +11,10 @@ public enum SuiteCouleur {
 	Blanc,
 	Rose,
 	Gris;
+	
+    public static SuiteCouleur getAleaCouleur() 
+    {
+        Random alea = new Random();
+        return values()[alea.nextInt(values().length)];
+    }
 }
