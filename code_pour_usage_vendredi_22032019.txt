@@ -1,0 +1,27 @@
+import java.util.ArrayList;
+
+public class looper extends Test{
+	private char unicite;
+	private ArrayList<Test.Couleur> nums = new ArrayList<Test.Couleur>();
+
+	public char getUnicite() {
+		return unicite;
+	}
+
+	public void setUnicite(char unicite) {
+		this.unicite = unicite;
+	}
+	
+	public void unique_couleur(char unicite, ArrayList<Test.Couleur> n) {
+		if(unicite != 'o') {
+			Couleur z = Couleur.getAleaColor();
+			n.add(z);
+			for(int i = 0; i<3; i++) {
+				n.add(Couleur.getAleaColor());
+				n.add(z);
+			}
+		}
+	}
+
+
+}
