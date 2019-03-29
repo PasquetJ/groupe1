@@ -1,11 +1,11 @@
 package um3.projettransversal;
 
+import java.util.Random;
+
 public class Espace_de_TestLok{
 
 	public static void main(String[] args) {
-		SuiteCouleur a = SuiteCouleur.getAleaCouleur();
-		System.out.println(a);
-		System.out.println(a);
+		System.out.println(Repetition.suiteTable(3));
 
 	}
 

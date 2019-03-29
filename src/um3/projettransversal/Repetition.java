@@ -17,20 +17,18 @@ public class Repetition {
 		return choix;
 	}
 */
-	public SuiteCouleur[] dansTableau(int taille) {
-		SuiteCouleur tab [] = new SuiteCouleur[taille];
+	public static ArrayList<SuiteCouleur> suiteTable(int taille) {
+		ArrayList<SuiteCouleur> tab = new ArrayList<SuiteCouleur>();
+		Random rand = new Random();
+		int z = rand.nextInt(taille-1)+1;
 		SuiteCouleur rep = SuiteCouleur.getAleaCouleur();
-		int max = taille;
-		int min = 0;
-		int range = max - min +1;
-		for(int i = 0; i<taille-1; i++) {
-			if(i==range) {
-				tab[i]=rep;
-			} else {
-				tab[i]=SuiteCouleur.getAleaCouleur();
+		tab.add(rep);
+		for(int i=1; i<taille; i++) {
+			tab.add(SuiteCouleur.getAleaCouleur());
+			if(i==z) {
+				tab.add(rep);
 			}
 		}
-		tab[taille+1]=SuiteCouleur.getAleaCouleur();
 		return tab;
 	}
 	
