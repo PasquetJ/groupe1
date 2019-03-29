@@ -5,9 +5,7 @@ import java.util.Scanner;
 
 public class Partie implements Serializable
 {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	public String nom;
 	public String repetition;
@@ -31,19 +29,19 @@ public class Partie implements Serializable
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Nom ?");
 	    nom = sc.next();
-	    System.out.println("Repetition ?");
+	    System.out.println("Répétition ?");
 	    repetition = sc.next();
-	    System.out.println("Nb couleurs ?");
+	    System.out.println("Nombres de couleurs ?");
 		nombreCouleurs = sc.nextInt();
-		System.out.println("Couleurs ?");
+		System.out.println("Les couleurs ? (Devrons avoir une majuscule et mettre un tiret entre chaque couleurs)");
 		couleursJoueurs = sc.next();
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "Partie [nom=" + nom + ", repetition=" + repetition + ", nombreCouleurs=" + nombreCouleurs
-				+ ", couleursJoueurs=" + couleursJoueurs + "]";
+		return "Partie [nom joueur = " + nom + ", repetition = " + repetition + ", nombre de couleurs = " + nombreCouleurs
+				+ ", couleurs du joueur = " + couleursJoueurs + "]";
 	}
 
 
