@@ -18,7 +18,7 @@ public class Repetition {
 	}
 */
 	public static ArrayList<SuiteCouleur> suiteTable(int taille) {
-		ArrayList<SuiteCouleur> tab = new ArrayList<SuiteCouleur>();
+		ArrayList<SuiteCouleur> tab = new ArrayList<SuiteCoueur>();
 		Random rand = new Random();
 		int z = rand.nextInt(taille-1)+1;
 		SuiteCouleur rep = SuiteCouleur.getAleaCouleur();
