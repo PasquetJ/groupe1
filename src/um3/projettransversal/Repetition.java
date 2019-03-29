@@ -9,7 +9,7 @@ public class Repetition {
 		int min = 0;
 		int range = max - min +1;
 		for(int i=0; i<taille; i++) {
-			if(choix.indexOf()) {
+			if(choix.indexOf)) {
 				
 			}
 		}
