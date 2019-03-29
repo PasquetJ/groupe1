@@ -4,6 +4,7 @@ package um3.projettransversal;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -15,7 +16,6 @@ public class Client {
 	
 	public static void main(String[] zero) {
 		
-		
 		Socket socket;
 		BufferedReader in;
 		PrintWriter out;
@@ -25,44 +25,36 @@ public class Client {
 			socket = new Socket(InetAddress.getLocalHost(), 2019);	
 		    System.out.println("Demande de connexion");
 		    
-//Message de bienvenue du serveur
+/*Message de bienvenue du serveur
 		    in = new BufferedReader (new InputStreamReader (socket.getInputStream()));
-		    String message_distant = in.readLine();
-		    System.out.println(message_distant);
+		    String bienvenue = in.readLine();
+		    System.out.println(bienvenue);
 		    
-//Demende si le joueur est prêt
-		    String message_distant1 = in.readLine();
-		    System.out.println(message_distant1);
+Demende si le joueur est prêt
+		    String pret = in.readLine();
+		    System.out.println(pret);
 		    
-//Saisie du joueur s'il est prêt ou non et envoie au serveur
+Saisie du joueur s'il est prêt ou non et envoie au serveur
 		    Scanner sc = new Scanner(System.in);
-		    String message = sc.next();
+		    String debut = sc.next();
 		    out = new PrintWriter(socket.getOutputStream());
-		    out.println(message);
-		    out.flush();
-		    
-//Message retour suite à la réponse du joueur, explications
-		    String message_distant2 = in.readLine();
-		    System.out.println(message_distant2);
-		    
-//Début partie, saisie du nombre de couleur
-		    String message1 = sc.next();
-		    out = new PrintWriter(socket.getOutputStream());
-		    out.println(message1);
-		    out.flush();
-		    
-//Message demande répétition
-	    
-//Demande couleur
-		    String message_distant3 = in.readLine();
-		    System.out.println(message_distant3);
-		    String message2 = sc.next();
-		    out = new PrintWriter(socket.getOutputStream());
-		    out.println(message2);
+		  
+		    out.println(debut);
 		    out.flush();
 
+		Message retour suite à la réponse du joueur, explications
+		    String expliquation = in.readLine();
+		    System.out.println(expliquation);
+		    String expliquation1 = in.readLine();
+		    System.out.println(expliquation1);
+*/		    
+//Début partie, saisie du nombre de couleur
 		    
-		    sc.close(); 
+		    ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream());
+			Partie partie = new Partie();
+			partie.getPartie();
+			out2.writeObject(partie);
+		    
 		    socket.close();
 		       
 		}
