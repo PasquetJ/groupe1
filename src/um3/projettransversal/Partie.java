@@ -1,6 +1,7 @@
 package um3.projettransversal;
 
 import java.io.Serializable;
+import java.net.InetAddress;
 import java.util.Scanner;
 
 public class Partie implements Serializable
@@ -11,7 +12,6 @@ public class Partie implements Serializable
 	public String repetition;
 	public int nombreCouleurs;
 	public String couleursJoueurs;
-	
 	
 	public Partie(String nom, String repetition, int nombreCouleurs, String couleursJoueurs) {
 
@@ -33,7 +33,13 @@ public class Partie implements Serializable
 	    repetition = sc.next();
 	    System.out.println("Nombres de couleurs ?");
 		nombreCouleurs = sc.nextInt();
-		System.out.println("Les couleurs ? (Devrons avoir une majuscule et mettre un tiret entre chaque couleurs)");
+		System.out.println("Les couleurs ? (tout en minuscule et mettre un tiret entre chaque couleurs)");
+		couleursJoueurs = sc.next();
+	}
+	
+	public void getPartieCouleurs() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Les couleurs ? (tout en minuscule et mettre un tiret entre chaque couleurs)");
 		couleursJoueurs = sc.next();
 	}
 	
@@ -69,6 +75,5 @@ public class Partie implements Serializable
 	public final void setCouleursJoueurs(String couleursJoueurs) {
 		this.couleursJoueurs = couleursJoueurs;
 	}
-	
 	
 }

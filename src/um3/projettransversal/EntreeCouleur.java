@@ -4,15 +4,23 @@ import java.util.ArrayList;
 
 public class EntreeCouleur
 {
-    public static ArrayList<String> entreeCouleur(String Couleurs)
+    public static ArrayList<SuiteCouleur> entreeCouleur(String Couleurs)
     {
         String[] partie = Couleurs.split("-");
-        ArrayList<String> tab = new ArrayList<String>();
+        ArrayList<String> couleursJoueursString = new ArrayList<String>();
+
         for(int i = 0; i < partie.length; i++)
         {
-            tab.add(partie[i]);
+            couleursJoueursString.add(partie[i]);
         }
-        return tab;
+        
+        ArrayList<SuiteCouleur> couleursJoueursSuiteCouleur = new ArrayList<SuiteCouleur>();
+        
+		for(int i = 0; i < couleursJoueursString.size(); i++)
+		{
+			SuiteCouleur couleur = SuiteCouleur.valueOf(couleursJoueursString.get(i));
+			couleursJoueursSuiteCouleur.add(couleur);
+		}
+        return couleursJoueursSuiteCouleur;
     }
-
 }

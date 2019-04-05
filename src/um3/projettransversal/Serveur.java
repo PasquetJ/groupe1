@@ -2,6 +2,7 @@ package um3.projettransversal;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -42,17 +43,15 @@ public class Serveur
 			
 			ArrayList<SuiteCouleur> couleursDuServeur = new ArrayList<SuiteCouleur>();
 			
-			if(partie.getRepetition() != "non") {
-				System.out.println("coucou");
-				for(int i = 0; i < partie.nombreCouleurs; i++) {
-					couleursDuServeur.add(SuiteCouleur.getAleaCouleur());
-				}
+			for(int i = 0; i < partie.nombreCouleurs; i++)
+			{
+				couleursDuServeur.add(SuiteCouleur.getAleaCouleur());
 			}
 			
 			System.out.println("Couleurs du Serveur : " + couleursDuServeur);
 			
-			int[] rep = Reponse.Trouve(couleursDuServeur, EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs()));
-		    System.out.println("Réponse : " + rep);
+		    ObjectOutputStream out = new ObjectOutputStream(socketduserveur.getOutputStream());
+		    out.writeObject(couleursDuServeur);
 			
 			socketduserveur.close();
 		    socketserver.close();
@@ -61,5 +60,10 @@ public class Serveur
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "test []";
 	}
 }
