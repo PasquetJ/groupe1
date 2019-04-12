@@ -11,12 +11,14 @@ public class Partie implements Serializable
 	public String nom;
 	public int nombreCouleurs;
 	public String couleursJoueurs;
-	
-	public Partie(String nom, int nombreCouleurs, String couleursJoueurs) {
+	public String nonRepetition;
+
+	public Partie(String nom, int nombreCouleurs, String couleursJoueurs, String nonRepetition) {
 
 		this.nom = nom;
 		this.nombreCouleurs = nombreCouleurs;
 		this.couleursJoueurs = couleursJoueurs;
+		this.nonRepetition = nonRepetition;
 	}
 	
 	public Partie() {
@@ -29,6 +31,8 @@ public class Partie implements Serializable
 	    nom = sc.next();
 	    System.out.println("Nombres de couleurs ?");
 		nombreCouleurs = sc.nextInt();
+		System.out.println("Répétition des couleurs à trouver ? (oui/non)");
+		nonRepetition = sc.next();
 		System.out.println("Les couleurs ? (tout en minuscule et mettre un tiret entre chaque couleurs)");
 		couleursJoueurs = sc.next();
 	}
@@ -42,8 +46,8 @@ public class Partie implements Serializable
 	
 	@Override
 	public String toString() {
-		return "Partie [nom joueur = " + nom + ", nombre de couleurs = " + nombreCouleurs
-				+ ", couleurs du joueur = " + couleursJoueurs + "]";
+		return "nom joueur = " + nom + ", nombre de couleurs = " + nombreCouleurs
+				+ ", couleurs du joueur = " + couleursJoueurs + "répétition = " + nonRepetition;
 	}
 
 
@@ -64,6 +68,13 @@ public class Partie implements Serializable
 	}
 	public final void setCouleursJoueurs(String couleursJoueurs) {
 		this.couleursJoueurs = couleursJoueurs;
+	}
+	public String getNonRepetition() {
+		return nonRepetition;
+	}
+
+	public void setNonRepetition(String nonRepetition) {
+		this.nonRepetition = nonRepetition;
 	}
 	
 }

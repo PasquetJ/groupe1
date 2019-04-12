@@ -26,14 +26,12 @@ public class Serveur
 		    System.out.println("Un joueur s'est connecté");//si un joueur est connecté
 		    
 //Accueil du joueur		    
-
-//Déroulement de la partie
-			Partie partie = null;
+			Partie partieJoueur = null;
 			ObjectInputStream in = new ObjectInputStream(socketduserveur.getInputStream());
 			
 			try
 			{
-				partie = (Partie) in.readObject();
+				partieJoueur = (Partie) in.readObject();
 				
 			}
 			catch (ClassNotFoundException e)
@@ -41,18 +39,24 @@ public class Serveur
 				e.printStackTrace();
 			}
 			
-			System.out.println(partie);
+			System.out.println(partieJoueur);
 			
-			System.out.println("Le joueur connecté : " + partie.getNom());//si un joueur est connecté
-			System.out.println("Les couleurs sont : " + EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs(), partie.getNombreCouleurs()));
+			System.out.println("Le joueur connecté : " + partieJoueur.getNom());//si un joueur est connecté
+			System.out.println("Les couleurs sont : " + EntreeCouleur.entreeCouleur(partieJoueur.getCouleursJoueurs(), partieJoueur.getNombreCouleurs()));
 			
 			ArrayList<SuiteCouleur> couleursDuServeur = new ArrayList<SuiteCouleur>();
 			
-
-			for(int i = 0; i < partie.nombreCouleurs; i++)
-			{
-				couleursDuServeur.add(SuiteCouleur.getAleaCouleur());
+			if(partieJoueur.getNonRepetition().equals("oui")) {
+				for(int i = 0; i < partieJoueur.getNombreCouleurs(); i++)
+				{
+					couleursDuServeur.add(SuiteCouleur.getAleaCouleur());
+				}
 			}
+			else
+			{
+				couleursDuServeur = NonRepetition.Repet(partieJoueur.getNombreCouleurs());
+			}
+			
 			
 			System.out.println("Couleurs du Serveur : " + couleursDuServeur);
 			

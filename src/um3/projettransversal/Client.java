@@ -21,8 +21,7 @@ public class Client
 		try
 		{
 //Connexion serveur
-			socket = new Socket(InetAddress.getLocalHost(), 2019);	
-		    System.out.println("Demande de connexion");
+			socket = new Socket(InetAddress.getLocalHost(), 2019);
 		    
 		    ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 			Partie partie = new Partie();
@@ -35,26 +34,33 @@ public class Client
 			try
 			{
 				couleursServeur = (ArrayList<SuiteCouleur>) in.readObject();
-				System.out.println("mmmmmmmmmmmmmmmmmmmmmm" +couleursServeur);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			int[] Diff = new int[2];
-			Diff = Reponse.Trouve((ArrayList<SuiteCouleur>)couleursServeur.clone(), EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs(), partie.getNombreCouleurs()));
-			System.out.println("Couleurs bien placées : " + Diff[0] + "\nCouleurs mal placées : " + Diff[1]);
+			int tentative = 10;
+			int tentativeJoueur = 1;
 			
-			while(Diff[0] != couleursServeur.size())
+			Diff = Reponse.Trouve((ArrayList<SuiteCouleur>)couleursServeur.clone(), EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs(), partie.getNombreCouleurs()));
+			System.out.println("Couleurs bien placées : " + Diff[0] + "\nCouleurs mal placées : " + Diff[1] + "\nTentatives : " + tentativeJoueur);
+			
+			while(Diff[0] != couleursServeur.size() && tentativeJoueur != tentative)
 			{
+				tentativeJoueur++;
 				partie.getPartieCouleurs();
 				Diff = Reponse.Trouve((ArrayList<SuiteCouleur>)couleursServeur.clone(), EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs(), partie.getNombreCouleurs()));
-				System.out.println("Couleurs bien placées : " + Diff[0] + "\nCouleurs mal placées : " + Diff[1]);
+				System.out.println("Couleurs bien placées : " + Diff[0] + "\nCouleurs mal placées : " + Diff[1] + "\nTentatives : " + tentativeJoueur);
+				
 			}
 
 			if(Diff[0] == couleursServeur.size())
 			{
-				System.out.println("Gagné !"+Diff[0]+" "+ couleursServeur.size()+" "+couleursServeur);
+				System.out.println("Gagné !");
+			}
+			if(tentativeJoueur == tentative) {
+				System.out.println("Perdu !");
 			}
 			
 		    socket.close();
