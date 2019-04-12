@@ -12,7 +12,7 @@ public class Reponse {
 	//Method pour connaitre le nombre de bonne réponses a la mauvaise ou bonne place//
 	//////////////////////////////////////////////////////////////////////////////////
 	
-	public static ArrayList<Integer> Trouve(ArrayList<SuiteCouleur> couleursServeur, ArrayList<SuiteCouleur> couleursJoueur)
+	public static int[] Trouve(ArrayList<SuiteCouleur> couleursServeur, ArrayList<SuiteCouleur> couleursJoueur)
 	{
 		
 		//recréation des variables pour ne pas modifier les listes de départ
@@ -29,8 +29,8 @@ public class Reponse {
 		
 		if ( listeRecherche.equals(listeDeviner)) //condition victoire
 		{
-			BonneCouleurBonnePlace = Integer.MAX_VALUE ;
-			BonneCouleurMauvaisPlace = Integer.MAX_VALUE ;
+			BonneCouleurBonnePlace = couleursServeur.size() ;
+			BonneCouleurMauvaisPlace = 0 ;
 			
 		}
 		else //si pas gagné
@@ -71,10 +71,6 @@ public class Reponse {
 		listeTrouve[0] = BonneCouleurBonnePlace;
 		listeTrouve[1] = BonneCouleurMauvaisPlace;
 		
-		ArrayList<Integer> listeTrouver = new ArrayList<Integer>();
-		for(int j = 0; j < listeTrouve.length; j++) {
-			listeTrouver.add(listeTrouve[j]);
-		}
-		return listeTrouver;
+		return listeTrouve;
 	}	
 }

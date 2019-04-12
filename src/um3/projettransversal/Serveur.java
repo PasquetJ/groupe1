@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Serveur
 {
 	
-	public static void main(String[] zero)
+	public static void main(String[] zero) throws TailleListeCouleur
 	{
 		
 		ServerSocket socketserver ;
@@ -31,18 +31,24 @@ public class Serveur
 			Partie partie = null;
 			ObjectInputStream in = new ObjectInputStream(socketduserveur.getInputStream());
 			
-			try {
+			try
+			{
 				partie = (Partie) in.readObject();
-			} catch (ClassNotFoundException e) {
+				
+			}
+			catch (ClassNotFoundException e)
+			{
 				e.printStackTrace();
 			}
+			
 			System.out.println(partie);
 			
 			System.out.println("Le joueur connecté : " + partie.getNom());//si un joueur est connecté
-			System.out.println("Les couleurs sont : " + EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs()));
+			System.out.println("Les couleurs sont : " + EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs(), partie.getNombreCouleurs()));
 			
 			ArrayList<SuiteCouleur> couleursDuServeur = new ArrayList<SuiteCouleur>();
 			
+
 			for(int i = 0; i < partie.nombreCouleurs; i++)
 			{
 				couleursDuServeur.add(SuiteCouleur.getAleaCouleur());

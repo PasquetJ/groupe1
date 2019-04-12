@@ -10,13 +10,16 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 
-public class Client {
+public class Client
+{
 	
-	public static void main(String[] zero) {
+	public static void main(String[] zero) throws TailleListeCouleur
+	{
 		
 		Socket socket;
 
-		try {
+		try
+		{
 //Connexion serveur
 			socket = new Socket(InetAddress.getLocalHost(), 2019);	
 		    System.out.println("Demande de connexion");
@@ -24,35 +27,45 @@ public class Client {
 		    ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 			Partie partie = new Partie();
 			partie.getPartie();
+
 			out.writeObject(partie);
 		    
 			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 			ArrayList<SuiteCouleur> couleursServeur = new ArrayList<SuiteCouleur>();
-			try {
+			try
+			{
 				couleursServeur = (ArrayList<SuiteCouleur>) in.readObject();
+				System.out.println("mmmmmmmmmmmmmmmmmmmmmm" +couleursServeur);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			ArrayList<Integer> Diff = Reponse.Trouve(couleursServeur, EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs()));
-			System.out.println("Couleurs bien placées : " + Diff.get(0) + "\nCouleurs mal placées : " + Diff.get(1));
+			int[] Diff = new int[2];
+			Diff = Reponse.Trouve((ArrayList<SuiteCouleur>)couleursServeur.clone(), EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs(), partie.getNombreCouleurs()));
+			System.out.println("Couleurs bien placées : " + Diff[0] + "\nCouleurs mal placées : " + Diff[1]);
 			
-			while(Diff.get(0) < partie.getNombreCouleurs())
+			while(Diff[0] != couleursServeur.size())
 			{
 				partie.getPartieCouleurs();
-				Diff = Reponse.Trouve(couleursServeur, EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs()));
-				System.out.println("Couleurs bien placées : " + Diff.get(0) + "\nCouleurs mal placées : " + Diff.get(1));
+				Diff = Reponse.Trouve((ArrayList<SuiteCouleur>)couleursServeur.clone(), EntreeCouleur.entreeCouleur(partie.getCouleursJoueurs(), partie.getNombreCouleurs()));
+				System.out.println("Couleurs bien placées : " + Diff[0] + "\nCouleurs mal placées : " + Diff[1]);
 			}
-			
+
+			if(Diff[0] == couleursServeur.size())
+			{
+				System.out.println("Gagné !"+Diff[0]+" "+ couleursServeur.size()+" "+couleursServeur);
+			}
 			
 		    socket.close();
 		}
-		catch (UnknownHostException e) {
+		catch (UnknownHostException e)
+		{
 			
 			e.printStackTrace();
 		}
-		catch (IOException e) {
+		catch (IOException e)
+		{
 			
 			e.printStackTrace();
 		}

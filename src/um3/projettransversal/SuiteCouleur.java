@@ -4,7 +4,7 @@ import java.util.Random;
 
 public enum SuiteCouleur {
 	rouge,
-	bleu, 
+	bleu,
 	jaune, 
 	noir,
 	blanc,
@@ -18,4 +18,7 @@ public enum SuiteCouleur {
         Random alea = new Random();
         return values()[alea.nextInt(values().length)];
     }
+    
+    
+    
 }
