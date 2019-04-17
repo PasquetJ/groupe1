@@ -1,8 +1,6 @@
 package um3.projettransversal;
 
 import java.io.Serializable;
-import java.net.InetAddress;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Partie implements Serializable
