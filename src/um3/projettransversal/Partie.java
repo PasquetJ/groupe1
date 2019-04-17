@@ -2,6 +2,7 @@ package um3.projettransversal;
 
 import java.io.Serializable;
 import java.net.InetAddress;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Partie implements Serializable
@@ -37,10 +38,18 @@ public class Partie implements Serializable
 		couleursJoueurs = sc.next();
 	}
 	
-	public void getPartieCouleurs() {
+	public void getPartieCouleurs() throws TailleListeCouleur {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Les couleurs ? (tout en minuscule et mettre un tiret entre chaque couleurs)");
 		couleursJoueurs = sc.next();
+		
+		String[] couleurs = couleursJoueurs.split("-");
+		int nombresCouleurs = couleurs.length;
+		if (nombresCouleurs != getNombreCouleurs())
+		{
+			throw new TailleListeCouleur(nombresCouleurs, getNombreCouleurs());
+		}
+
 	}
 	
 	
