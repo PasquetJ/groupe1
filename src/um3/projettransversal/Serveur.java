@@ -6,8 +6,6 @@ public class Serveur
 	
 	public static void main(String[] zero) throws TailleListeCouleur
 	{
-		
-		    (new LancePartie()).start();    
-			
+		(new LancePartie()).start();		
 	}
 }

@@ -24,7 +24,7 @@ public class Partie implements Serializable
 		// TODO Auto-generated constructor stub
 	}
 
-	public void getPartie() {
+	public void getPartie() throws TailleListeCouleur {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Nom ?");
 	    nom = sc.next();
@@ -34,6 +34,22 @@ public class Partie implements Serializable
 		nonRepetition = sc.next();
 		System.out.println("Les couleurs ? (tout en minuscule et mettre un tiret entre chaque couleurs)");
 		couleursJoueurs = sc.next();
+		
+		String[] couleurs1 = couleursJoueurs.split("-");
+		int nombresCouleurs1 = couleurs1.length;
+		
+		String[] couleurs2 = couleursJoueurs.split("");
+		int nombresCouleurs2 = couleurs2.length;
+		
+		if (nombresCouleurs1 != getNombreCouleurs())
+		{
+			throw new TailleListeCouleur(nombresCouleurs1, getNombreCouleurs());
+		}
+		
+		if (nombresCouleurs2 != getNombreCouleurs())
+		{
+			throw new TailleListeCouleur(nombresCouleurs2, getNombreCouleurs());
+		}
 	}
 	
 	public void getPartieCouleurs() throws TailleListeCouleur {
@@ -41,11 +57,20 @@ public class Partie implements Serializable
 		System.out.println("Les couleurs ? (tout en minuscule et mettre un tiret entre chaque couleurs)");
 		couleursJoueurs = sc.next();
 		
-		String[] couleurs = couleursJoueurs.split("-");
-		int nombresCouleurs = couleurs.length;
-		if (nombresCouleurs != getNombreCouleurs())
+		String[] couleurs1 = couleursJoueurs.split("-");
+		int nombresCouleurs1 = couleurs1.length;
+		
+		String[] couleurs2 = couleursJoueurs.split("");
+		int nombresCouleurs2 = couleurs2.length;
+		
+		if (nombresCouleurs1 != getNombreCouleurs())
 		{
-			throw new TailleListeCouleur(nombresCouleurs, getNombreCouleurs());
+			throw new TailleListeCouleur(nombresCouleurs1, getNombreCouleurs());
+		}
+		
+		if (nombresCouleurs2 != getNombreCouleurs())
+		{
+			throw new TailleListeCouleur(nombresCouleurs2, getNombreCouleurs());
 		}
 
 	}
