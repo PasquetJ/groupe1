@@ -32,6 +32,7 @@ public class Partie implements Serializable
 		nombreCouleurs = sc.nextInt();
 		System.out.println("Répétition des couleurs à trouver ? (oui/non)");
 		nonRepetition = sc.next();
+		
 		System.out.println("Les couleurs ? (tout en minuscule et mettre un tiret entre chaque couleurs)");
 		couleursJoueurs = sc.next();
 		

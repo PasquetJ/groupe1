@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import javax.sound.sampled.Port;
+
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -22,7 +25,7 @@ public class LancePartie extends Thread {
 				socketduserveur = socketserver.accept(); 
 			    System.out.println("Un joueur s'est connecté");//si un joueur est connecté
 			    
-		  Partie partieJoueur = null;
+			Partie partieJoueur = null;
 			ObjectInputStream in = new ObjectInputStream(socketduserveur.getInputStream());
 			
 			try

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Client
 {
-	
+  	
 	public static void main(String[] zero) throws TailleListeCouleur
 	{
 		
@@ -19,10 +19,11 @@ public class Client
 		  try
 			{
 	//Connexion serveur
-				socket = new Socket(InetAddress.getLocalHost(), 2019);
+			  	socket = new Socket(InetAddress.getLocalHost(), 2019);
 			    
 			    ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 				Partie partie = new Partie();
+				System.out.println("Début du jeu. Vous avez le droit à 10 tentives");
 				partie.getPartie();
 
 				out.writeObject(partie);
